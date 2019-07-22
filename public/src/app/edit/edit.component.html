@@ -1,0 +1,42 @@
+<h2>Edit this pet</h2>
+<div class="jumbotron">
+    <h3 class="text-danger">{{errors?.name.message}}</h3>
+    <h3 class="text-danger">{{errors?.type.message}}</h3>
+    <h3 class="text-danger">{{errors?.desc.message}}</h3>
+    <form (submit)="updateOnePet(pet._id)">
+      <p> {{ pet | json }} </p>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="pet.name">
+      </div>
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <input type="text" class="form-control" id="type" name="type" [(ngModel)]="pet.type">
+      </div>
+      <div class="form-group">
+        <label for="desc">Description:</label>
+        <input type="text" class="form-control" id="desc" name="desc"  [(ngModel)]="pet.desc">
+      </div>
+      <p>Skills:</p>
+      <div class="form-group row">
+        <label for="skill1" class="col-sm-2 col-form-label">Skill 1</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="skill1" name="skill1" [(ngModel)]="skill1">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="skill2" class="col-sm-2 col-form-label">Skill 2</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="skill2" name="skill2" [(ngModel)]="skill2">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="skill3" class="col-sm-2 col-form-label">Skill 3</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="skill3" name="skill3" [(ngModel)]="skill3">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button [routerLink]="['']" class="btn btn-primary">Cancel</button>
+    </form>
+</div>

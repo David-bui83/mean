@@ -1,0 +1,11 @@
+<a [routerLink]="['']" class="float-right" href="#">Home</a>
+<h2>Details about {{pet?.name}}</h2>
+<h2>Pet type: {{pet?.type}}</h2>
+<h2>Description: {{pet?.desc}}</h2>
+<h2>Skills:</h2>
+<ul style="list-style: none;" *ngFor="let skill of pet?.skills">
+  <li><h2>{{skill}}</h2></li>
+</ul>
+<h2>Likes: {{pet?.likes}}</h2>
+<button type="submit" class="btn btn-primary"(click)="updateOnePet(pet._id)" ng-disabled="isDisabled" ng-click="disableButton()">Like This pet</button>
+<button class="btn btn-primary" (click)="destroyOnePet(pet._id)">Adopt this pet</button>

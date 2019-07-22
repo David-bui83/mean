@@ -1,0 +1,51 @@
+const mongoose = require('mongoose');
+const Pets = mongoose.model('Pets');
+
+module.exports = {
+  getAll:(req,res)=>{
+    Pets.find({},(err,data)=>{
+      if(err){
+        res.json({messge:'error',data:err});
+      }else{
+        res.json({mesage:'success',data:data});
+      }
+    }).sort({type:1});
+  },
+  getOne:(req,res)=>{
+    Pets.findById({_id:req.params.id},(err,data)=>{
+      if(err){
+        res.json({message:'error',data:err});
+      }else{
+        res.json({message:'success',data:data});
+      }
+    })
+  },
+  new:(req,res)=>{
+    Pets.create(req.body,(err,data)=>{
+      if(err){
+        res.json({message:'error',data:err});
+      }else{
+        res.json({message:'success',data:data});
+      }
+    })
+  },
+  updateOne:(req,res)=>{
+    console.log(req.body)
+    Pets.findByIdAndUpdate({_id:req.params.id},req.body,{runValidators:true,context:'query'},(err,data)=>{
+      if(err){
+        res.json({message:'error',data:err});
+      }else{
+        res.json({message:'success',data:data});
+      }
+    })
+  },
+  destroy:(req,res)=>{
+    Pets.findByIdAndRemove({_id:req.params.id},(err,data)=>{
+      if(err){
+        res.json({message:'error',data:err});
+      }else{
+        res.json({message:'success',data:data})
+      }
+    })
+  }
+}
